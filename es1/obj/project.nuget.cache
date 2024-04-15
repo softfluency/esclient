@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "N+aSt6qB8gNnG94UXXlJwcuhATaMirDoOr5pq+lZU5kdGnSQ5gJba0DyQluj6tIdwIN4kMijWKOYhneIoV65og==",
+  "dgSpecHash": "/vsrjZp1NUJdchoCJiUf7CTyivKeVx8ZS6t/nIOWxP7AKlNRElAO5UXIgjCjRP8WRGPo6NMIHzHF1xLpevq91A==",
   "success": true,
-  "projectFilePath": "D:\\SoftFluency\\Konzolna aplikacija\\es1\\es1.csproj",
+  "projectFilePath": "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\es1\\es1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dejan\\.nuget\\packages\\commandlineparser\\2.9.1\\commandlineparser.2.9.1.nupkg.sha512",
     "C:\\Users\\Dejan\\.nuget\\packages\\elasticsearch.net\\7.17.5\\elasticsearch.net.7.17.5.nupkg.sha512",

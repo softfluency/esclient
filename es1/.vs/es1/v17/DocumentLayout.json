@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\SoftFluency\\Konzolna aplikacija\\es1\\",
+  "WorkspaceRootPath": "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\es1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DA6A8B84-2EB5-44E5-A42E-1FC377B43568}|es1.csproj|d:\\softfluency\\konzolna aplikacija\\es1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DA6A8B84-2EB5-44E5-A42E-1FC377B43568}|es1.csproj|d:\\softfluency\\konzolna aplikacija\\esclient\\es1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DA6A8B84-2EB5-44E5-A42E-1FC377B43568}|es1.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9CA9ED6B-9C2D-49DE-A1E1-F8219DB93AD4}|..\\Es1Class\\Es1Class.csproj|d:\\softfluency\\konzolna aplikacija\\es1class\\classes1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\SoftFluency\\Konzolna aplikacija\\Es1Class\\ClassEs1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -36,22 +36,23 @@
               "DocumentIndex": 1,
               "Title": "ClassEs1.cs",
               "DocumentMoniker": "D:\\SoftFluency\\Konzolna aplikacija\\Es1Class\\ClassEs1.cs",
-              "RelativeDocumentMoniker": "..\\Es1Class\\ClassEs1.cs",
+              "RelativeDocumentMoniker": "..\\..\\Es1Class\\ClassEs1.cs",
               "ToolTip": "D:\\SoftFluency\\Konzolna aplikacija\\Es1Class\\ClassEs1.cs",
-              "RelativeToolTip": "..\\Es1Class\\ClassEs1.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAAABgAAAApAAAA",
+              "RelativeToolTip": "..\\..\\Es1Class\\ClassEs1.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAABMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-07T16:34:08.188Z"
+              "WhenOpened": "2024-04-07T16:34:08.188Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\SoftFluency\\Konzolna aplikacija\\es1\\Program.cs",
+              "DocumentMoniker": "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\es1\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\SoftFluency\\Konzolna aplikacija\\es1\\Program.cs",
+              "ToolTip": "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\es1\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA8AAAArAAAA",
+              "ViewState": "AQIAACgAAAAAAAAAAAAowDQAAAC3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-07T16:27:05.165Z",
               "EditorCaption": ""

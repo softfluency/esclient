@@ -10,3 +10,16 @@ D:\SoftFluency\Konzolna aplikacija\Es1Class\obj\Debug\net8.0\Es1Class.dll
 D:\SoftFluency\Konzolna aplikacija\Es1Class\obj\Debug\net8.0\refint\Es1Class.dll
 D:\SoftFluency\Konzolna aplikacija\Es1Class\obj\Debug\net8.0\Es1Class.pdb
 D:\SoftFluency\Konzolna aplikacija\Es1Class\obj\Debug\net8.0\ref\Es1Class.dll
+D:\SoftFluency\Konzolna aplikacija\esclient\Es1Class\bin\Debug\net8.0\Es1Class.deps.json
+D:\SoftFluency\Konzolna aplikacija\esclient\Es1Class\bin\Debug\net8.0\Es1Class.dll
+D:\SoftFluency\Konzolna aplikacija\esclient\Es1Class\bin\Debug\net8.0\Es1Class.pdb
+D:\SoftFluency\Konzolna aplikacija\esclient\Es1Class\obj\Debug\net8.0\Es1Class.csproj.AssemblyReference.cache
+D:\SoftFluency\Konzolna aplikacija\esclient\Es1Class\obj\Debug\net8.0\Es1Class.GeneratedMSBuildEditorConfig.editorconfig
+D:\SoftFluency\Konzolna aplikacija\esclient\Es1Class\obj\Debug\net8.0\Es1Class.AssemblyInfoInputs.cache
+D:\SoftFluency\Konzolna aplikacija\esclient\Es1Class\obj\Debug\net8.0\Es1Class.AssemblyInfo.cs
+D:\SoftFluency\Konzolna aplikacija\esclient\Es1Class\obj\Debug\net8.0\Es1Class.csproj.CoreCompileInputs.cache
+D:\SoftFluency\Konzolna aplikacija\esclient\Es1Class\obj\Debug\net8.0\Es1Class.sourcelink.json
+D:\SoftFluency\Konzolna aplikacija\esclient\Es1Class\obj\Debug\net8.0\Es1Class.dll
+D:\SoftFluency\Konzolna aplikacija\esclient\Es1Class\obj\Debug\net8.0\refint\Es1Class.dll
+D:\SoftFluency\Konzolna aplikacija\esclient\Es1Class\obj\Debug\net8.0\Es1Class.pdb
+D:\SoftFluency\Konzolna aplikacija\esclient\Es1Class\obj\Debug\net8.0\ref\Es1Class.dll

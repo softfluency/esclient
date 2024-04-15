@@ -12,6 +12,7 @@ namespace es1
             Parser.Default.ParseArguments<Es1>(args)
                 .WithParsed(opts =>
                 {
+                    Console.WriteLine("Parsed!");
                     Console.WriteLine("Try to connect to ES");
                     var settings = new ConnectionSettings(new Uri("http://localhost:9200"))
                     .DefaultIndex("test_index")
@@ -28,11 +29,13 @@ namespace es1
                     {
                         if ( opts.insert )
                         {
+                            Console.WriteLine("Inserting");
                             var response = client.IndexDocument(new { Name = opts.name, Age = opts.age });
                             Console.WriteLine("Indexed");
                         }
                         else if ( opts.search)
                         {
+                            Console.WriteLine($"Searching {opts.name}");
                             Console.WriteLine($"Option is {opts.search} I'll try to search");
 
                             var searchResponse = client.Search<Person>(s => s
@@ -47,7 +50,7 @@ namespace es1
 
                             foreach (var hit in searchResponse.Hits)
                             {
-                                Console.WriteLine($"Name> {hit.Source.Name} --- Age:{hit.Source.Age} --- Index:{hit.Index} --- ES Id:{hit.Id}");
+                                Console.WriteLine($"Name: {hit.Source.Name} --- Age:{hit.Source.Age} --- Source: {hit.Source} ---  Index:{hit.Index} --- ES Id:{hit.Id} --- Explanation: {hit.Explanation}");
                             }
                         }
                     }

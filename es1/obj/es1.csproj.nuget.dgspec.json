@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SoftFluency\\Konzolna aplikacija\\es1\\es1.csproj": {}
+    "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\es1\\es1.csproj": {}
   },
   "projects": {
-    "D:\\SoftFluency\\Konzolna aplikacija\\Es1Class\\Es1Class.csproj": {
+    "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\Es1Class\\Es1Class.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SoftFluency\\Konzolna aplikacija\\Es1Class\\Es1Class.csproj",
+        "projectUniqueName": "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\Es1Class\\Es1Class.csproj",
         "projectName": "Es1Class",
-        "projectPath": "D:\\SoftFluency\\Konzolna aplikacija\\Es1Class\\Es1Class.csproj",
+        "projectPath": "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\Es1Class\\Es1Class.csproj",
         "packagesPath": "C:\\Users\\Dejan\\.nuget\\packages\\",
-        "outputPath": "D:\\SoftFluency\\Konzolna aplikacija\\Es1Class\\obj\\",
+        "outputPath": "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\Es1Class\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -75,14 +75,14 @@
         }
       }
     },
-    "D:\\SoftFluency\\Konzolna aplikacija\\es1\\es1.csproj": {
+    "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\es1\\es1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SoftFluency\\Konzolna aplikacija\\es1\\es1.csproj",
+        "projectUniqueName": "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\es1\\es1.csproj",
         "projectName": "es1",
-        "projectPath": "D:\\SoftFluency\\Konzolna aplikacija\\es1\\es1.csproj",
+        "projectPath": "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\es1\\es1.csproj",
         "packagesPath": "C:\\Users\\Dejan\\.nuget\\packages\\",
-        "outputPath": "D:\\SoftFluency\\Konzolna aplikacija\\es1\\obj\\",
+        "outputPath": "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\es1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -104,8 +104,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\SoftFluency\\Konzolna aplikacija\\Es1Class\\Es1Class.csproj": {
-                "projectPath": "D:\\SoftFluency\\Konzolna aplikacija\\Es1Class\\Es1Class.csproj"
+              "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\Es1Class\\Es1Class.csproj": {
+                "projectPath": "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\Es1Class\\Es1Class.csproj"
               }
             }
           }

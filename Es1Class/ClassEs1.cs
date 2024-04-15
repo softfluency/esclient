@@ -26,7 +26,5 @@ namespace Es1Class
 
         [Option('y',"age", Required =false, HelpText = "Age")]
         public int age { get; set; }
-
-
     }
 }

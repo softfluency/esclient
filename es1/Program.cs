@@ -25,15 +25,15 @@ namespace es1
                     // Indeksiranje dokumenta
                     Console.WriteLine("Try to indexing or searching");
                     Console.WriteLine($"Name is {opts.name}");
-                    if ( opts.name != null )
+                    if (opts.name != null)
                     {
-                        if ( opts.insert )
+                        if (opts.insert)
                         {
                             Console.WriteLine("Inserting");
                             var response = client.IndexDocument(new { Name = opts.name, Age = opts.age });
                             Console.WriteLine("Indexed");
                         }
-                        else if ( opts.search)
+                        else if (opts.search)
                         {
                             Console.WriteLine($"Searching {opts.name}");
                             Console.WriteLine($"Option is {opts.search} I'll try to search");
@@ -43,9 +43,7 @@ namespace es1
                                 .Match(m => m
                                     .Field(f => f.Name)
                                         .Query(opts.name)
-                                        )
-                                    )
-                            );
+                                        )));
                             Console.WriteLine(("Results"));
 
                             foreach (var hit in searchResponse.Hits)

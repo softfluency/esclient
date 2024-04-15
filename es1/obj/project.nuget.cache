@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "DlyhsDZa+CwJtF4GN5UDYzzOelEzz3tZkVjjJQuBUR4s700JWItv+dA0DZTg6h9/hIWCrgLiDUW/U6dYKwGJzA==",
+  "dgSpecHash": "SYK+fAdXyC9onXTQ+F9oZ5Mv5g7njGI0lV21NTmv9fqGZi0YWIMsglc9KJK6VVI6HqKYJ2tm15lfZF/tPo2yHw==",
   "success": true,
-  "projectFilePath": "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\es1\\Es1.csproj",
+  "projectFilePath": "C:\\Softfluency\\Projects\\esclient\\es1\\Es1.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Dejan\\.nuget\\packages\\commandlineparser\\2.9.1\\commandlineparser.2.9.1.nupkg.sha512",
-    "C:\\Users\\Dejan\\.nuget\\packages\\elasticsearch.net\\7.17.5\\elasticsearch.net.7.17.5.nupkg.sha512",
-    "C:\\Users\\Dejan\\.nuget\\packages\\microsoft.csharp\\4.6.0\\microsoft.csharp.4.6.0.nupkg.sha512",
-    "C:\\Users\\Dejan\\.nuget\\packages\\nest\\7.17.5\\nest.7.17.5.nupkg.sha512",
-    "C:\\Users\\Dejan\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
-    "C:\\Users\\Dejan\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0\\system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512"
+    "C:\\Users\\Milovan\\.nuget\\packages\\commandlineparser\\2.9.1\\commandlineparser.2.9.1.nupkg.sha512",
+    "C:\\Users\\Milovan\\.nuget\\packages\\elasticsearch.net\\7.17.5\\elasticsearch.net.7.17.5.nupkg.sha512",
+    "C:\\Users\\Milovan\\.nuget\\packages\\microsoft.csharp\\4.6.0\\microsoft.csharp.4.6.0.nupkg.sha512",
+    "C:\\Users\\Milovan\\.nuget\\packages\\nest\\7.17.5\\nest.7.17.5.nupkg.sha512",
+    "C:\\Users\\Milovan\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\Milovan\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0\\system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

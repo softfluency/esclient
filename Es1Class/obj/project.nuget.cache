@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "d5FCzJQxfctxYq3RBdNO6IbGSX6KgxEMBPcipJ8l1CiMd19BOguMHd6iyUpFd0hj5lo+vcRnwoHdpY4d4uyRkg==",
+  "success": true,
+  "projectFilePath": "D:\\SoftFluency\\Konzolna aplikacija\\Es1Class\\Es1Class.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Dejan\\.nuget\\packages\\commandlineparser\\2.9.1\\commandlineparser.2.9.1.nupkg.sha512"
+  ],
+  "logs": []
+}

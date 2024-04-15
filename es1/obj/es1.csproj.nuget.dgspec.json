@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Softfluency\\Projects\\esclient\\es1\\es1.csproj": {}
+    "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\es1\\Es1.csproj": {}
   },
   "projects": {
-    "C:\\Softfluency\\Projects\\esclient\\Es1Class\\Es1Class.csproj": {
+    "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\Es1Class\\Es1Class.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Softfluency\\Projects\\esclient\\Es1Class\\Es1Class.csproj",
+        "projectUniqueName": "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\Es1Class\\Es1Class.csproj",
         "projectName": "Es1Class",
-        "projectPath": "C:\\Softfluency\\Projects\\esclient\\Es1Class\\Es1Class.csproj",
-        "packagesPath": "C:\\Users\\Milovan\\.nuget\\packages\\",
-        "outputPath": "C:\\Softfluency\\Projects\\esclient\\Es1Class\\obj\\",
+        "projectPath": "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\Es1Class\\Es1Class.csproj",
+        "packagesPath": "C:\\Users\\Dejan\\.nuget\\packages\\",
+        "outputPath": "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\Es1Class\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Milovan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dejan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -25,8 +25,9 @@
           "net8.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-libraries/nuget/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
@@ -70,24 +71,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Softfluency\\Projects\\esclient\\es1\\es1.csproj": {
+    "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\es1\\Es1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Softfluency\\Projects\\esclient\\es1\\es1.csproj",
-        "projectName": "es1",
-        "projectPath": "C:\\Softfluency\\Projects\\esclient\\es1\\es1.csproj",
-        "packagesPath": "C:\\Users\\Milovan\\.nuget\\packages\\",
-        "outputPath": "C:\\Softfluency\\Projects\\esclient\\es1\\obj\\",
+        "projectUniqueName": "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\es1\\Es1.csproj",
+        "projectName": "Es1",
+        "projectPath": "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\es1\\Es1.csproj",
+        "packagesPath": "C:\\Users\\Dejan\\.nuget\\packages\\",
+        "outputPath": "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\es1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Milovan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dejan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -95,15 +96,16 @@
           "net8.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-libraries/nuget/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Softfluency\\Projects\\esclient\\Es1Class\\Es1Class.csproj": {
-                "projectPath": "C:\\Softfluency\\Projects\\esclient\\Es1Class\\Es1Class.csproj"
+              "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\Es1Class\\Es1Class.csproj": {
+                "projectPath": "D:\\SoftFluency\\Konzolna aplikacija\\esclient\\Es1Class\\Es1Class.csproj"
               }
             }
           }
@@ -148,7 +150,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,54 +1,109 @@
 ﻿using CommandLine;
 using Nest;
+using Elasticsearch.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Text;
 
 namespace esclient;
 
 internal class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
-        Console.WriteLine("Try to parsing");
-        Parser.Default.ParseArguments<Es1>(args)
-            .WithParsed(opts =>
+        // Testiranje stanja indeksa uz argumente
+        // Primer: dotnet run "http://10.7.7.2:9200/" "elastic" "DwzU0n-AD2RYuOd3MwZV" "dt_prilozi"
+
+        var settings = new ConnectionSettings(new Uri(args[0]))
+            .BasicAuthentication(args[1], args[2]);
+
+        var client = new ElasticClient(settings);
+
+        var response = client.Cat.Indices(descriptor => descriptor.Index(args[3]));
+
+        if (response.IsValid)
+        {
+            foreach (var index in response.Records)
             {
-                Console.WriteLine("Try to connect to ES");
-                var settings = new ConnectionSettings(new Uri("http://localhost:9200"))
-                .DefaultIndex("test_index")
-                .BasicAuthentication(opts.Username, opts.Password);
+                Console.WriteLine($"Index: {index.Index}, Health: {index.Health}, Status: {index.Status}, Docs count: {index.DocsCount}");
+            }
+        }
+        else
+        {
+            Console.WriteLine($"Error: {response.OriginalException}");
+        }
 
-                var client = new ElasticClient(settings);
+        // Provera dostupnosti ES
 
-                Console.WriteLine("Connected!");
+        //var elasticUrl = "http://10.7.7.2:9200/";
+        //var elasticUsername = "elastic";
+        //var elasticPassword = "DwzU0n-AD2RYuOd3MwZV";
 
-                // Indeksiranje dokumenta
-                Console.WriteLine("Try to indexing or searching");
-                Console.WriteLine($"Name is {opts.Name}");
-                if (opts.Name != null)
-                {
-                    if (opts.Insert)
-                    {
-                        var response = client.IndexDocument(new { Name = opts.Name, Age = opts.Age });
-                        Console.WriteLine("Indexed");
-                    }
-                    else if (opts.Search)
-                    {
-                        Console.WriteLine($"Option is {opts.Search} I'll try to search");
+        //var httpClient = new HttpClient();
 
-                        var searchResponse = client.Search<Person>(s => s
-                        .Query(q => q
-                            .Match(m => m
-                                .Field(f => f.Name)
-                                    .Query(opts.Name))));
+        //var base64Credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{elasticUsername}:{elasticPassword}"));
+        //httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", base64Credentials);
 
-                        Console.WriteLine(("Results"));
+        //try
+        //{
+        //    var response = await httpClient.GetAsync(elasticUrl);
 
-                        foreach (var hit in searchResponse.Hits)
-                        {
-                            Console.WriteLine($"Name> {hit.Source.Name} --- Age:{hit.Source.Age} --- Index:{hit.Index} --- ES Id:{hit.Id}");
-                        }
-                    }
-                }
-            })
-            .WithNotParsed(errs => Console.WriteLine(errs.ToString()));
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        Console.WriteLine("Elasticsearch is available");
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine($"Failed to connect to Elasticsearch. Status code: {response.StatusCode}");
+        //    }
+        //}
+        //catch (Exception ex)
+        //{
+        //    Console.WriteLine($"An error occurred while connecting to Elasticsearch: {ex.Message}");
+        //}
+
+        //Console.WriteLine("Try to parsing");
+        //Parser.Default.ParseArguments<Es1>(args)
+        //    .WithParsed(opts =>
+        //    {
+        //        Console.WriteLine("Try to connect to ES");
+        //        var settings = new ConnectionSettings(new Uri("http://localhost:9200"))
+        //        .DefaultIndex("test_index")
+        //        .BasicAuthentication(opts.Username, opts.Password);
+
+        //        var client = new ElasticClient(settings);
+
+        //        Console.WriteLine("Connected!");
+
+        //        // Indeksiranje dokumenta
+        //        Console.WriteLine("Try to indexing or searching");
+        //        Console.WriteLine($"Name is {opts.Name}");
+        //        if (opts.Name != null)
+        //        {
+        //            if (opts.Insert)
+        //            {
+        //                var response = client.IndexDocument(new { Name = opts.Name, Age = opts.Age });
+        //                Console.WriteLine("Indexed");
+        //            }
+        //            else if (opts.Search)
+        //            {
+        //                Console.WriteLine($"Option is {opts.Search} I'll try to search");
+
+        //                var searchResponse = client.Search<Person>(s => s
+        //                .Query(q => q
+        //                    .Match(m => m
+        //                        .Field(f => f.Name)
+        //                            .Query(opts.Name))));
+
+        //                Console.WriteLine(("Results"));
+
+        //                foreach (var hit in searchResponse.Hits)
+        //                {
+        //                    Console.WriteLine($"Name> {hit.Source.Name} --- Age:{hit.Source.Age} --- Index:{hit.Index} --- ES Id:{hit.Id}");
+        //                }
+        //            }
+        //        }
+        //    })
+        //    .WithNotParsed(errs => Console.WriteLine(errs.ToString()));
     }
 }

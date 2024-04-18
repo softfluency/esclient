@@ -1,7 +1,6 @@
 ﻿using CommandLine;
 using Nest;
 
-
 namespace esclient;
 
 internal class Program
@@ -15,7 +14,7 @@ internal class Program
                 Console.WriteLine("Try to connect to ES");
                 var settings = new ConnectionSettings(new Uri("http://localhost:9200"))
                 .DefaultIndex("test_index")
-                .BasicAuthentication(opts.username, opts.password);
+                .BasicAuthentication(opts.Username, opts.Password);
 
                 var client = new ElasticClient(settings);
 
@@ -23,24 +22,23 @@ internal class Program
 
                 // Indeksiranje dokumenta
                 Console.WriteLine("Try to indexing or searching");
-                Console.WriteLine($"Name is {opts.name}");
-                if (opts.name != null)
+                Console.WriteLine($"Name is {opts.Name}");
+                if (opts.Name != null)
                 {
-                    if (opts.insert)
+                    if (opts.Insert)
                     {
-                        var response = client.IndexDocument(new { Name = opts.name, Age = opts.age });
+                        var response = client.IndexDocument(new { Name = opts.Name, Age = opts.Age });
                         Console.WriteLine("Indexed");
                     }
-                    else if (opts.search)
+                    else if (opts.Search)
                     {
-                        Console.WriteLine($"Option is {opts.search} I'll try to search");
+                        Console.WriteLine($"Option is {opts.Search} I'll try to search");
 
                         var searchResponse = client.Search<Person>(s => s
                         .Query(q => q
                             .Match(m => m
                                 .Field(f => f.Name)
-                                    .Query(opts.name)
-                                    )));
+                                    .Query(opts.Name))));
 
                         Console.WriteLine(("Results"));
 

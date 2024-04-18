@@ -10,11 +10,11 @@ namespace esclient
         [Option('w', "password", Required = true, HelpText = "Password")]
         public string? Password { get; set; }
 
-        [Option('r', "url", Required = false, HelpText = "Uniform Resource Locator")]
-        public bool Insert { get; set; }
+        [Option('l', "url", Required = true, HelpText = "Uniform Resource Locator")]
+        public string? URL { get; set; }
 
         [Option('i', "index", Required = false, HelpText = "Index")]
-        public bool Index { get; set; }
+        public string? Index { get; set; }
 
         //[Option('s', "search", Required = false, HelpText = "Search")]
         //public bool Search { get; set; }

@@ -4,6 +4,7 @@ using Elasticsearch.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Text;
+using System;
 
 namespace esclient;
 
@@ -49,7 +50,14 @@ internal class Program
                     //}
                 }
 
-                if (response.IsValid)
+                if (response.IsValid && opts.Index != null)
+                {
+                    foreach (var index in response.Records)
+                    {
+                        Console.WriteLine($"Index: {index.Index},\nHealth: {index.Health},\nStatus: {index.Status},\nDocs count: {index.DocsCount},\nDeleted: {index.DocsDeleted},\nStore size: {index.StoreSize}");
+                    }
+                }
+                else if (response.IsValid)
                 {
                     foreach (var index in response.Records)
                     {

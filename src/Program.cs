@@ -1,54 +1,21 @@
 ﻿using CommandLine;
 using Nest;
-using Elasticsearch.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Text;
-using System;
 
 namespace esclient;
 
 internal class Program
 {
-    static async Task Main(string[] args)
+    static void Main(string[] args)
     {
         Parser.Default.ParseArguments<EsOptions>(args)
-            .WithParsed(async opts =>
+            .WithParsed(opts =>
             {
-                var settings = new ConnectionSettings(new Uri(opts.URL))
+                var settings = new ConnectionSettings(new Uri(opts.URL!))
                     .BasicAuthentication(opts.Username, opts.Password);
 
                 var client = new ElasticClient(settings);
 
                 var response = client.Cat.Indices(descriptor => descriptor.Index(opts.Index));
-
-                if (opts.Availability)
-                {
-                    Console.WriteLine("Checking Elasticsearch availability...");
-
-                    //var httpClient = new HttpClient();
-
-                    //var base64Credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{opts.Username}:{opts.Password}"));
-                    //httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", base64Credentials);
-
-                    //try
-                    //{
-                    //    var availabilityResponse = await httpClient.GetAsync(opts.URL);
-
-                    //    if (availabilityResponse.IsSuccessStatusCode)
-                    //    {
-                    //        Console.WriteLine("Elasticsearch is available");
-                    //    }
-                    //    else
-                    //    {
-                    //        Console.WriteLine($"Failed to connect to Elasticsearch. Status code: {availabilityResponse.StatusCode}");
-                    //    }
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    Console.WriteLine($"An error occurred while connecting to Elasticsearch: {ex.Message}");
-                    //}
-                }
 
                 if (response.IsValid && opts.Index != null)
                 {

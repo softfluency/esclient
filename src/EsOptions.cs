@@ -18,7 +18,4 @@ public class EsOptions
 
     [Option('z', "availability", Required = false, HelpText = "Availability")]
     public bool Availability { get; set; }
-
-    //[Option('s', "search", Required = false, HelpText = "Search")]
-    //public bool Search { get; set; }
 }

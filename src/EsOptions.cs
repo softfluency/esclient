@@ -4,11 +4,11 @@ namespace esclient;
 
 public class EsOptions
 {
-    [Option('u', "username", Required = true, HelpText = "Username")]
-    public string? Username { get; set; }
+    //[Option('u', "username", Required = true, HelpText = "Username")]
+    //public string? Username { get; set; }
 
-    [Option('w', "password", Required = true, HelpText = "Password")]
-    public string? Password { get; set; }
+    //[Option('w', "password", Required = true, HelpText = "Password")]
+    //public string? Password { get; set; }
 
     [Option('l', "url", Required = true, HelpText = "Uniform Resource Locator")]
     public string? URL { get; set; }

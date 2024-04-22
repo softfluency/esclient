@@ -10,10 +10,20 @@ internal class Program
         Parser.Default.ParseArguments<EsOptions>(args)
             .WithParsed(opts =>
             {
-                var settings = new ConnectionSettings(new Uri(opts.URL!))
-                    .BasicAuthentication(opts.Username, opts.Password);
+                //var esUrl = "https://elastic:KLY*E6yJ4YeD47nivktw@194.146.57.203:9200";
 
-                var client = new ElasticClient(settings);
+                var esUrl = opts.URL;
+                var server = new Uri(esUrl);
+
+                var conn = new ConnectionSettings(server);
+
+                //var settings = new ConnectionSettings(new Uri(opts.URL!))
+                //    .BasicAuthentication(opts.Username, opts.Password);
+
+                conn.EnableHttpCompression();                
+                conn.ConnectionLimit(-1);
+
+                var client = new ElasticClient(conn);
 
                 var response = client.Cat.Indices(descriptor => descriptor.Index(opts.Index));
 

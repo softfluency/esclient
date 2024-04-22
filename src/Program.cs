@@ -7,46 +7,33 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Try to parsing");
-        Parser.Default.ParseArguments<Es1>(args)
+        Parser.Default.ParseArguments<EsOptions>(args)
             .WithParsed(opts =>
             {
-                Console.WriteLine("Try to connect to ES");
-                var settings = new ConnectionSettings(new Uri("http://localhost:9200"))
-                .DefaultIndex("test_index")
-                .BasicAuthentication(opts.Username, opts.Password);
+                var settings = new ConnectionSettings(new Uri(opts.URL!))
+                    .BasicAuthentication(opts.Username, opts.Password);
 
                 var client = new ElasticClient(settings);
 
-                Console.WriteLine("Connected!");
+                var response = client.Cat.Indices(descriptor => descriptor.Index(opts.Index));
 
-                // Indeksiranje dokumenta
-                Console.WriteLine("Try to indexing or searching");
-                Console.WriteLine($"Name is {opts.Name}");
-                if (opts.Name != null)
+                if (response.IsValid && opts.Index != null)
                 {
-                    if (opts.Insert)
+                    foreach (var index in response.Records)
                     {
-                        var response = client.IndexDocument(new { Name = opts.Name, Age = opts.Age });
-                        Console.WriteLine("Indexed");
+                        Console.WriteLine($"Index: {index.Index},\nHealth: {index.Health},\nStatus: {index.Status},\nDocs count: {index.DocsCount},\nDeleted: {index.DocsDeleted},\nStore size: {index.StoreSize}");
                     }
-                    else if (opts.Search)
+                }
+                else if (response.IsValid)
+                {
+                    foreach (var index in response.Records)
                     {
-                        Console.WriteLine($"Option is {opts.Search} I'll try to search");
-
-                        var searchResponse = client.Search<Person>(s => s
-                        .Query(q => q
-                            .Match(m => m
-                                .Field(f => f.Name)
-                                    .Query(opts.Name))));
-
-                        Console.WriteLine(("Results"));
-
-                        foreach (var hit in searchResponse.Hits)
-                        {
-                            Console.WriteLine($"Name> {hit.Source.Name} --- Age:{hit.Source.Age} --- Index:{hit.Index} --- ES Id:{hit.Id}");
-                        }
+                        Console.WriteLine($"Index: {index.Index}, Health: {index.Health}, Status: {index.Status}, Docs count: {index.DocsCount}");
                     }
+                }
+                else
+                {
+                    Console.WriteLine($"Error: {response.OriginalException}");
                 }
             })
             .WithNotParsed(errs => Console.WriteLine(errs.ToString()));

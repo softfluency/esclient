@@ -10,56 +10,56 @@ internal class Program
         Parser.Default.ParseArguments<EsOptions>(args)
             .WithParsed(opts =>
             {
-                //var esUrl = "https://elastic:KLY*E6yJ4YeD47nivktw@194.146.57.203:9200";
-
                 var esUrl = opts.URL;
-                var server = new Uri(esUrl);
 
-                var conn = new ConnectionSettings(server);
-
-                //var settings = new ConnectionSettings(new Uri(opts.URL!))
-                //    .BasicAuthentication(opts.Username, opts.Password);
-
-                conn.EnableHttpCompression();                
-                conn.ConnectionLimit(-1);
-
-                var client = new ElasticClient(conn);
-
-                if (opts.URL != null)
+                if (esUrl != null)
                 {
-                    var resp = client.Ping();
-                    if (resp.IsValid)
+                    var server = new Uri(esUrl);
+
+                    var conn = new ConnectionSettings(server);
+
+                    conn.EnableHttpCompression();
+                    conn.ConnectionLimit(-1);
+
+                    var client = new ElasticClient(conn);
+                    var response = client.Cat.Indices(descriptor => descriptor.Index(opts.Index));
+
+                    if (response.IsValid && opts.Index != null && opts.Index.Length == 0) // opts.Index != null && opts.Index.Length == 0
                     {
-                        Console.WriteLine("All is well");
+                        foreach (var index in response.Records)
+                        {
+                            Console.WriteLine($"Index: {index.Index}, Health: {index.Health}, Status: {index.Status}, Docs count: {index.DocsCount}");
+                        }
+                    }
+                    else if (response.IsValid && opts.Index != null && !string.IsNullOrEmpty(opts.Index)) // !string.IsNullOrEmpty(opts.Index)
+                    {
+                        foreach (var index in response.Records)
+                        {
+                            Console.WriteLine($"Index: {index.Index},\nHealth: {index.Health},\nStatus: {index.Status},\nDocs count: {index.DocsCount},\nDeleted: {index.DocsDeleted},\nStore size: {index.StoreSize}");
+                        }
+                    }
+                    else if (response.IsValid && opts.Index == null)
+                    {
+                        if (opts.URL != null)
+                        {
+                            var resp = client.Ping();
+                            if (resp.IsValid)
+                            {
+                                Console.WriteLine("All is well");
+                            }
+                            else
+                            {
+                                Console.WriteLine(resp.ServerError);
+                                Console.WriteLine(resp.OriginalException.ToString());
+                                Console.WriteLine("Elasticsearch cluster is down");
+                            }
+                        }
                     }
                     else
                     {
-                        Console.WriteLine(resp.ServerError);
-                        Console.WriteLine(resp.OriginalException.ToString());
-                        Console.WriteLine("Elasticsearch cluster is down");
+                        Console.WriteLine($"Error: {response.OriginalException}");
                     }
-                }
-
-                //var response = client.Cat.Indices(descriptor => descriptor.Index(opts.Index));
-
-                //if (response.IsValid && opts.Index != null)
-                //{
-                //    foreach (var index in response.Records)
-                //    {
-                //        Console.WriteLine($"Index: {index.Index},\nHealth: {index.Health},\nStatus: {index.Status},\nDocs count: {index.DocsCount},\nDeleted: {index.DocsDeleted},\nStore size: {index.StoreSize}");
-                //    }
-                //}
-                //else if (response.IsValid)
-                //{
-                //    foreach (var index in response.Records)
-                //    {
-                //        Console.WriteLine($"Index: {index.Index}, Health: {index.Health}, Status: {index.Status}, Docs count: {index.DocsCount}");
-                //    }
-                //}
-                //else
-                //{
-                //    Console.WriteLine($"Error: {response.OriginalException}");
-                //}
+                }                
             })
             .WithNotParsed(errs => Console.WriteLine(errs.ToString()));
     }

@@ -24,14 +24,14 @@ internal class Program
                     var client = new ElasticClient(conn);
                     var response = client.Cat.Indices(descriptor => descriptor.Index(opts.Index));
 
-                    if (response.IsValid && opts.Index != null && opts.Index.Length == 0) // opts.Index != null && opts.Index.Length == 0
+                    if (response.IsValid && opts.Index == null && args.Count() == 3)
                     {
                         foreach (var index in response.Records)
                         {
                             Console.WriteLine($"Index: {index.Index}, Health: {index.Health}, Status: {index.Status}, Docs count: {index.DocsCount}");
                         }
                     }
-                    else if (response.IsValid && opts.Index != null && !string.IsNullOrEmpty(opts.Index)) // !string.IsNullOrEmpty(opts.Index)
+                    else if (response.IsValid && opts.Index != null && !string.IsNullOrEmpty(opts.Index))
                     {
                         foreach (var index in response.Records)
                         {
@@ -45,7 +45,7 @@ internal class Program
                             var resp = client.Ping();
                             if (resp.IsValid)
                             {
-                                Console.WriteLine("All is well");
+                                Console.WriteLine("Elasticsearch cluster is up and running");
                             }
                             else
                             {

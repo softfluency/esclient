@@ -9,7 +9,4 @@ public class EsOptions
 
     [Option('i', "index", Required = false, HelpText = "Index")]
     public string? Index { get; set; }
-
-    [Option('z', "availability", Required = false, HelpText = "Availability")]
-    public bool Availability { get; set; }
 }

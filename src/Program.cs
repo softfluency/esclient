@@ -1,4 +1,5 @@
 ﻿using CommandLine;
+using ConsoleTables;
 using Nest;
 
 namespace esclient;
@@ -10,30 +11,57 @@ internal class Program
         Parser.Default.ParseArguments<EsOptions>(args)
             .WithParsed(opts =>
             {
-                var settings = new ConnectionSettings(new Uri(opts.URL!))
-                    .BasicAuthentication(opts.Username, opts.Password);
+                var esUrl = opts.URL;
 
-                var client = new ElasticClient(settings);
-
-                var response = client.Cat.Indices(descriptor => descriptor.Index(opts.Index));
-
-                if (response.IsValid && opts.Index != null)
+                if (esUrl != null)
                 {
-                    foreach (var index in response.Records)
+                    var server = new Uri(esUrl);
+
+                    var conn = new ConnectionSettings(server);
+
+                    conn.EnableHttpCompression();
+                    conn.ConnectionLimit(-1);
+
+                    var client = new ElasticClient(conn);
+                    var response = client.Cat.Indices(descriptor => descriptor.Index(opts.Index));
+
+                    if (response.IsValid && opts.Index == null && args.Length == 3)
                     {
-                        Console.WriteLine($"Index: {index.Index},\nHealth: {index.Health},\nStatus: {index.Status},\nDocs count: {index.DocsCount},\nDeleted: {index.DocsDeleted},\nStore size: {index.StoreSize}");
+                        var indexesTable = new ConsoleTable("Index", "Health", "Status");
+                        foreach (var index in response.Records)
+                        {
+                            indexesTable.AddRow(index.Index, index.Health, index.Status);
+                        }
+                        indexesTable.Write();
                     }
-                }
-                else if (response.IsValid)
-                {
-                    foreach (var index in response.Records)
+                    else if (response.IsValid && opts.Index != null)
                     {
-                        Console.WriteLine($"Index: {index.Index}, Health: {index.Health}, Status: {index.Status}, Docs count: {index.DocsCount}");
+                        var indexTable = new ConsoleTable("Index", "Health", "Status", "Docs count", "Deleted", "Store size");
+                        indexTable.Options.EnableCount = false;
+                        foreach (var index in response.Records)
+                        {
+                            indexTable.AddRow(index.Index, index.Health, index.Status, index.DocsCount, index.DocsDeleted, index.StoreSize);
+                        }
+                        indexTable.Write();
                     }
-                }
-                else
-                {
-                    Console.WriteLine($"Error: {response.OriginalException}");
+                    else if (response.IsValid && opts.Index == null)
+                    {
+                        var resp = client.Ping();
+                        if (resp.IsValid)
+                        {
+                            Console.WriteLine("Elasticsearch cluster is up and running");
+                        }
+                        else
+                        {
+                            Console.WriteLine(resp.ServerError);
+                            Console.WriteLine(resp.OriginalException.ToString());
+                            Console.WriteLine("Elasticsearch cluster is down");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error: {response.OriginalException}");
+                    }
                 }
             })
             .WithNotParsed(errs => Console.WriteLine(errs.ToString()));

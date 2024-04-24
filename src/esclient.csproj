@@ -3,12 +3,18 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
+	<PackageId>esclient</PackageId>
+	<Version>1.0.0.1</Version>
+	<Authors>Milovan Srdanovic</Authors>
+	<Company>Softfluency</Company>
+	<Product>ES Client</Product>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="ConsoleTables" Version="2.6.1" />
     <PackageReference Include="NEST" Version="7.17.5" />
   </ItemGroup>
 

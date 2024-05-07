@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
 	<PackageId>esclient</PackageId>
-	<Version>1.0.0.7</Version>
+	<Version>1.0.0.8</Version>
 	<Authors>Milovan Srdanovic</Authors>
 	<Company>Softfluency</Company>
 	<Product>ES Client</Product>

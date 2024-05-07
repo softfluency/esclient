@@ -2,7 +2,7 @@
 
 ## New version on NuGet
 
-1. In .csproj file, under /<PropertyGroup//> tag, in Version tag - change version *(version number should be inside the tag)*  
+1. In .csproj file, under \<PropertyGroup\> tag, in Version tag - change version *(version number should be inside the tag)*  
 2. From terminal in project  
 dotnet pack --configuration Release (a new folder in structure is created)  
 The folder can be default (bin -> Release...) or named folder from PackageOutputPath tag, in PropertyGroup tag of .csproj  

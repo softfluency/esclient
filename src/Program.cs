@@ -1,6 +1,5 @@
 ﻿using CommandLine;
 using ConsoleTables;
-using Nest;
 
 namespace esclient;
 
@@ -20,12 +19,12 @@ class Program
     {
         var server = new Uri(opts.URL);
 
-        var conn = new ConnectionSettings(server);
+        var connSettings = new ConnectionSettings(server)
+                            .EnableHttpCompression()
+                            .ConnectionLimit(-1);
 
-        conn.EnableHttpCompression();
-        conn.ConnectionLimit(-1);
-
-        var client = new ElasticClient(conn);
+        var clientFactory = new ElasticClientFactory();
+        var client = clientFactory.CreateClient(connSettings);
         var response = client.Cat.Indices(descriptor => descriptor.Index(opts.Index));
 
         if (!response.IsValid)

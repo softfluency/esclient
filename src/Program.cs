@@ -1,5 +1,4 @@
 ﻿using CommandLine;
-using ConsoleTables;
 
 namespace esclient;
 
@@ -36,7 +35,7 @@ class Program
         if (opts.Index == null && args.Length == 3)
         {
             // -l URL -i Print all indexes
-            var indexesTable = new ConsoleTable("Index", "Health", "Status");
+            var indexesTable = IndexesTable.CreateTable("Index", "Health", "Status");
             foreach (var index in response.Records)
             {
                 indexesTable.AddRow(index.Index, index.Health, index.Status);
@@ -46,7 +45,7 @@ class Program
         else if (opts.Index != null)
         {
             // -l URL -i INDEX Print one index
-            var indexTable = new ConsoleTable("Index", "Health", "Status", "Docs count", "Deleted", "Store size");
+            var indexTable = IndexesTable.CreateTable("Index", "Health", "Status", "Docs count", "Deleted", "Store size");
             indexTable.Options.EnableCount = false;
             foreach (var index in response.Records)
             {

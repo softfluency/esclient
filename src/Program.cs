@@ -16,15 +16,10 @@ class Program
 
     private static void OptionsParse(string[] args, EsOptions opts)
     {
-        var server = new Uri(opts.URL);
-
-        var connSettings = new ConnectionSettings(server)
-                            .EnableHttpCompression()
-                            .ConnectionLimit(-1);
-
-        var clientFactory = new ElasticClientFactory();
-        var client = clientFactory.CreateClient(connSettings);
-        var response = client.Cat.Indices(descriptor => descriptor.Index(opts.Index));
+        var elasticsearchService = new ElasticsearchService(new ElasticClientFactory());
+        var serverUri = new Uri(opts.URL);
+        var client = elasticsearchService.CreateElasticClient(serverUri, true, -1);
+        var response = elasticsearchService.GetIndices(client, opts.Index);
 
         if (!response.IsValid)
         {

@@ -1,4 +1,5 @@
 ﻿using CommandLine;
+using esclient.Elastic;
 
 namespace esclient;
 
@@ -18,8 +19,16 @@ class Program
     {
         var elasticsearchService = new ElasticsearchService(opts.URL);
 
-        var nodesInfo = elasticsearchService.GetNodesInfo();
-        Console.WriteLine(String.Join(", ", nodesInfo.Nodes.Select(n => n.Value.Name).ToArray()));
+        var status = elasticsearchService.GetServerStatus();
+        var isValid = status.IsValid;
+        if (isValid)
+        {
+            Console.WriteLine("Elasticsearch cluster is up and running");
+        }
+        else
+        {
+            Console.WriteLine(status.ServerError);
+        }
 
         var response = opts.Index == null 
             ? elasticsearchService.GetIndices() 

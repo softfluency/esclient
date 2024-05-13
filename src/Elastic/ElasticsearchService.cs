@@ -1,6 +1,6 @@
 ﻿using Nest;
 
-namespace esclient
+namespace esclient.Elastic
 {
     public class ElasticsearchService
     {
@@ -23,6 +23,11 @@ namespace esclient
             return _clientFactory.CreateClient(connectionSettings);
         }
 
+        public PingResponse GetServerStatus()
+        {
+            return _client.Ping();
+        }
+
         public CatResponse<CatIndicesRecord> GetIndices()
         {
             return _client.Cat.Indices(descriptor => descriptor.Index(null));
@@ -30,13 +35,7 @@ namespace esclient
 
         public CatResponse<CatIndicesRecord> GetIndex(string indexName)
         {
-            // Vratimo niz stringova (i napravimo klasu koja ima hedere i values)
             return _client.Cat.Indices(descriptor => descriptor.Index(indexName));
-        }
-
-        public NodesInfoResponse GetNodesInfo()
-        {
-            return _client.Nodes.Info();
         }
     }
 }

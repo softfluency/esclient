@@ -1,4 +1,4 @@
-﻿namespace esclient
+﻿namespace esclient.Elastic
 {
     public class ConnectionSettings
     {

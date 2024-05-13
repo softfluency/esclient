@@ -16,10 +16,14 @@ class Program
 
     private static void OptionsParse(string[] args, EsOptions opts)
     {
-        var elasticsearchService = new ElasticsearchService(new ElasticClientFactory());
-        var serverUri = new Uri(opts.URL);
-        var client = elasticsearchService.CreateElasticClient(serverUri, true, -1);
-        var response = elasticsearchService.GetIndices(client, opts.Index);
+        var elasticsearchService = new ElasticsearchService(opts.URL);
+
+        var nodesInfo = elasticsearchService.GetNodesInfo();
+        Console.WriteLine(String.Join(", ", nodesInfo.Nodes.Select(n => n.Value.Name).ToArray()));
+
+        var response = opts.Index == null 
+            ? elasticsearchService.GetIndices() 
+            : elasticsearchService.GetIndex(opts.Index);
 
         if (!response.IsValid)
         {

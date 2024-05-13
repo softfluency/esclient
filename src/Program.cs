@@ -33,24 +33,13 @@ class Program
 
         if (opts.Index == null && args.Length == 3)
         {
-            // -l URL -i Print all indexes
-            var indexesTable = IndexesTable.CreateTable("Index", "Health", "Status");
-            foreach (var index in response.Records)
-            {
-                indexesTable.AddRow(index.Index, index.Health, index.Status);
-            }
-            indexesTable.Write();
+            string[] headers = { "Index", "Health", "Status" };
+            IndexesTable.PrintAllIndices(headers, response);
         }
         else if (opts.Index != null)
         {
-            // -l URL -i INDEX Print one index
-            var indexTable = IndexesTable.CreateTable("Index", "Health", "Status", "Docs count", "Deleted", "Store size");
-            indexTable.Options.EnableCount = false;
-            foreach (var index in response.Records)
-            {
-                indexTable.AddRow(index.Index, index.Health, index.Status, index.DocsCount, index.DocsDeleted, index.StoreSize);
-            }
-            indexTable.Write();
+            string[] headers = { "Index", "Health", "Status", "Docs count", "Deleted", "Store size" };
+            IndexesTable.PrintSingleIndex(headers, response);
         }
         else
         {

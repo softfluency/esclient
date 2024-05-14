@@ -5,17 +5,16 @@ namespace esclient;
 
 class Program
 {
-    static int Main(string[] args)
+    static void Main(string[] args)
     {
-        return Parser.Default.ParseArguments<EsOptions.Status, EsOptions.Indices, EsOptions.Index>(args)
-            .MapResult(
-                (EsOptions.Status opts) => ReturnStatus(opts),
-                (EsOptions.Indices opts) => ReturnIndices(opts),
-                (EsOptions.Index opts) => ReturnIndex(opts),
-                errs => 1);
+        Parser.Default.ParseArguments<EsOptions.Status, EsOptions.Indices, EsOptions.Index>(args)
+            .WithParsed<EsOptions.Status>(opts => ReturnStatus(opts))
+            .WithParsed<EsOptions.Indices>(opts => ReturnIndices(opts))
+            .WithParsed<EsOptions.Index>(opts => ReturnIndex(opts))
+            .WithNotParsed(errs => HandleErrors(errs));
     }
 
-    public static int ReturnStatus(EsOptions.Status opts)
+    public static void ReturnStatus(EsOptions.Status opts)
     {
         var elasticsearchService = new ElasticsearchService(opts.URL);
         var status = elasticsearchService.GetServerStatus();
@@ -29,29 +28,31 @@ class Program
         {
             Console.WriteLine(status.OriginalException.Message);
         }
-
-        return 0;
     }
 
-    public static int ReturnIndices(EsOptions.Indices opts)
+    public static void ReturnIndices(EsOptions.Indices opts)
     {
         var elasticsearchService = new ElasticsearchService(opts.URL);
         var response = elasticsearchService.GetIndices();
 
         string[] headers = { "Index", "Health", "Status" };
         IndexesTable.PrintAllIndices(headers, response);
-
-        return 0;
     }
 
-    public static int ReturnIndex(EsOptions.Index opts)
+    public static void ReturnIndex(EsOptions.Index opts)
     {
         var elasticsearchService = new ElasticsearchService(opts.URL);
         var response = elasticsearchService.GetIndex(opts.IndexSearch);
 
         string[] headers = { "Index", "Health", "Status", "Docs count", "Deleted", "Store size" };
         IndexesTable.PrintSingleIndex(headers, response);
+    }
 
-        return 0;
+    public static void HandleErrors(IEnumerable<Error> errs)
+    {
+        foreach (var error in errs)
+        {
+            Console.WriteLine(error);
+        }
     }
 }

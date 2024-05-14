@@ -8,9 +8,9 @@ class Program
     static void Main(string[] args)
     {
         Parser.Default.ParseArguments<EsOptions.Status, EsOptions.Indices, EsOptions.Index>(args)
-            .WithParsed<EsOptions.Status>(opts => ReturnStatus(opts))
-            .WithParsed<EsOptions.Indices>(opts => ReturnIndices(opts))
-            .WithParsed<EsOptions.Index>(opts => ReturnIndex(opts))
+            .WithParsed<EsOptions.Status>(ReturnStatus)
+            .WithParsed<EsOptions.Indices>(ReturnIndices)
+            .WithParsed<EsOptions.Index>(ReturnIndex)
             .WithNotParsed(errs => HandleErrors(errs));
     }
 

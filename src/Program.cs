@@ -27,7 +27,7 @@ class Program
         }
         else
         {
-            Console.WriteLine(status.ServerError.ToString());
+            Console.WriteLine(status.OriginalException.Message);
         }
 
         return 0;

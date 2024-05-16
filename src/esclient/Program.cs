@@ -10,27 +10,29 @@ class Program
         Parser.Default.ParseArguments<EsOptions.Status, EsOptions.Indices, EsOptions.Index>(args)
             .WithParsed<EsOptions.Status>(ReturnStatus)
             .WithParsed<EsOptions.Indices>(ReturnIndices)
-            .WithParsed<EsOptions.Index>(ReturnIndex)
-            .WithNotParsed(errs => HandleErrors(errs));
+            .WithParsed<EsOptions.Index>(ReturnIndex);
     }
 
-    public static void ReturnStatus(EsOptions.Status opts)
+    static void ReturnStatus(EsOptions.Status opts)
     {
         var elasticsearchService = new ElasticsearchService(opts.URL);
         var status = elasticsearchService.GetServerStatus();
 
         if (status.IsValid)
         {
-            Console.WriteLine("Elasticsearch cluster is up and running");
-            Console.WriteLine(status);
+            Console.WriteLine("Elasticsearch cluster is up and running");            
+            Console.WriteLine($"{status.ClusterName} {status.Version.Number}");
         }
         else
         {
-            Console.WriteLine(status.OriginalException.Message);
+            Console.WriteLine("Elasticsearch cluster is not accessible");
+
+            if (status.OriginalException != null)
+                Console.WriteLine(status.OriginalException?.Message);
         }
     }
 
-    public static void ReturnIndices(EsOptions.Indices opts)
+    static void ReturnIndices(EsOptions.Indices opts)
     {
         var elasticsearchService = new ElasticsearchService(opts.URL);
         var response = elasticsearchService.GetIndices();
@@ -39,20 +41,12 @@ class Program
         IndexesTable.PrintAllIndices(headers, response);
     }
 
-    public static void ReturnIndex(EsOptions.Index opts)
+    static void ReturnIndex(EsOptions.Index opts)
     {
         var elasticsearchService = new ElasticsearchService(opts.URL);
         var response = elasticsearchService.GetIndex(opts.IndexSearch);
 
         string[] headers = { "Index", "Health", "Status", "Docs count", "Deleted", "Store size" };
         IndexesTable.PrintSingleIndex(headers, response);
-    }
-
-    public static void HandleErrors(IEnumerable<Error> errs)
-    {
-        foreach (var error in errs)
-        {
-            Console.WriteLine(error);
-        }
     }
 }

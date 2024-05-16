@@ -1,5 +1,14 @@
 # The .NET esclient Project by Softfluency
 
+## Usage
+Short info
+
+install
+
+E.g.
+esclient status -u https://[username]:[password]@yourelasticsearch.com
+
+
 ## New version on NuGet
 
 1. In .csproj file, under \<PropertyGroup\> in \<Version\>1.0.0.0\<Version\> - change version  

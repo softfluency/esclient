@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "esclient": {
+      "commandName": "Project",
+      "commandLineArgs": ""
+    }
+  }
+}

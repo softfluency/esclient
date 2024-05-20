@@ -3,7 +3,7 @@
 ## Usage  
 
 Esclient is an application for checking the status of Elasticsearch, its availability, indices and single indexes.  
-The application is used from cmd or terminal, by entering verbs and options: 
+The application is used from cmd or terminal, by entering verbs and options:  
 **Verbs**  
 status - for ES server status  
 indices - for listing all indexes written in ES  

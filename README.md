@@ -1,13 +1,26 @@
 # The .NET esclient Project by Softfluency
 
-## Usage
-Short info
+## Usage  
 
-install
+Esclient is an application for checking the status of Elasticsearch, its availability, indices and single indexes.  
+The application is used from cmd or terminal, by entering verbs and options:  
+**Verbs**  
+status - for ES server status  
+indices - for listing all indexes written in ES  
+index - for single index info  
+**Options**  
+-u - required option, ES server url  
+-i - option used with index, for getting info on a certain index  
 
-E.g.
-esclient status -u https://[username]:[password]@yourelasticsearch.com
+## Installation  
 
+The application is available as a .NET tool you can install and call from the shell/command line.  
+*dotnet tool install --global esclient --version*
+
+**Usage examples**  
+esclient status -u https://[username]:[password]@yourelasticsearch.com - returns status of ES server  
+esclient indices -u https://[username]:[password]@yourelasticsearch.com - returns all indices  
+esclient index -u https://[username]:[password]@yourelasticsearch.com -i [indexName] returns info on entered index
 
 ## New version on NuGet
 
